@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %} 
+    Home - main page
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4"> Corona / Covid-19 latest information </h1>
+      <p class="lead">type country name to display latest results.....</p>
+    </div>
+  </div>
+
+
+  <div class="container">
+      <form action="" method="post">
+        <div class="input-group input-group-lg">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-lg">Country name: </span>
+            </div>
+            <input type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" name="cname" id="cname">
+            <button type="submit" class="btn btn-success" >Submit</button>  
+        </div>
+   </form>
+  </div>
+
+  <br><br>
+  <div class="container">
+    
+    {% for r in data %}
+
+    
+
+        <div class="jumbotron jumbotron-fluid bg-success">
+            <div class="container">
+              <h1 class="display-6 text-white">{{r['country']}} </h1>
+              <p class="lead text-white">{{r['day']}}</p>
+            </div>
+          </div>
+   
+          
+          <button class="btn btn-success btn-lg" type="button">
+            New cases: <span class="badge">{{r['cases_new']}}</span>
+          </button> 
+          <button class="btn btn-primary btn-lg" type="button">
+            Active cases: <span class="badge">{{r['cases_active']}}</span>
+          </button> 
+          <button class="btn btn-warning btn-lg" type="button">
+            Critical cases:   <span class="badge">{{r['cases_critical']}}</span>
+          </button> 
+          <button class="btn btn-primary btn-lg" type="button">
+            Total cases:  <span class="badge">{{r['cases_total']}}</span>
+          </button>
+          <button class="btn btn-danger btn-lg" type="button">
+            New deaths:  <span class="badge">{{r['deaths_new']}}</span>
+          </button> <br>
+          <button class="btn btn-danger btn-lg" type="button">
+            Total deaths:   <span class="badge">{{r['deaths_total']}} </span>
+          </button> 
+          <button class="btn btn-info btn-lg" type="button">
+            Total tests:   <span class="badge">{{r['tests_total']}}</span>
+          </button> <br>
+
+     </div>
+
+
+        {% endfor %}
+
+     
+{% endblock %}
